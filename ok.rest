@@ -1,0 +1,40 @@
+GET http://localhost:3000/user
+
+###
+
+
+GET http://localhost:3000/user/624c8a312fc65e7fad03e006
+
+
+
+###
+
+POST http://localhost:3000/user HTTP/1.1
+Content-Type: application/json
+{
+    "name": "Jubayer Nirjhor",
+    "email": "jubayerrahman@gmail.com",
+    "username": "jubs",
+    "password": "12345678"
+}
+
+
+###
+DELETE http://localhost:3000/user/624c735c49d982a12ea9f971
+
+###
+PATCH http://localhost:3000/user/624c8a312fc65e7fad03e006 HTTP/1.1
+Content-Type: application/json
+{
+    "name": "Jubayer Nirjhor",
+    "email": "jubs@gmail.com"
+}
+
+
+
+
+
+
+
+
+
