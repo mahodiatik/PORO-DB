@@ -1,0 +1,41 @@
+GET http://localhost:3000/book
+
+###
+
+
+GET http://localhost:3000/book/625274a26389a64dd348494a
+
+
+
+###
+
+POST http://localhost:3000/book HTTP/1.1
+Content-Type: application/json
+{
+    "name": "Padda Nadir Majhi",
+    "writer": "Manik Bandopadhyay",
+    "genre": "Novel",
+    "publisher": "Prothoma",
+    "link": "http://www.prothom-alo.com/"
+}
+
+
+###
+DELETE http://localhost:3000/book/624c735c49d982a12ea9f971
+
+###
+PATCH http://localhost:3000/book/624c8a312fc65e7fad03e006 HTTP/1.1
+Content-Type: application/json
+{
+    "name": "Jubayer Nirjhor",
+    "email": "jubs@gmail.com"
+}
+
+
+
+
+
+
+
+
+

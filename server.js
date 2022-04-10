@@ -7,6 +7,10 @@ app.use(express.json())
 const userRouter = require('./routes/user')
 app.use('/user', userRouter)
 
+app.use(express.json())
+const bookRouter = require('./routes/book')
+app.use('/book', bookRouter)
+
 mongoose.connect(process.env.DB_URL);
 
 const db= mongoose.connection
