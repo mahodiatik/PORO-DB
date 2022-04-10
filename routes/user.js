@@ -14,7 +14,7 @@ router.get('/', async(req, res) => {
 
 //Getting one
 router.get('/:id',getUser, (req, res) => {
-   res.json(res.user)
+   res.json(req.user)
 })
 
 //Creating one
@@ -38,20 +38,20 @@ router.post('/', async (req, res) => {
 //Updating one
 router.patch('/:id',getUser, async (req, res) => {
     if(req.body.name != null){
-        res.user.name = req.body.name
+        req.user.name = req.body.name
     }
     if(req.body.email != null){
-        res.user.email = req.body.email
+        req.user.email = req.body.email
     }
     if(req.body.username != null){
-        res.user.username = req.body.username
+        req.user.username = req.body.username
     }
     if(req.body.password != null){
-        res.user.password = req.body.password
+        req.user.password = req.body.password
     }
 
     try{
-        const updatedUser = await res.user.save()
+        const updatedUser = await req.user.save()
         res.json(updatedUser)
     } catch(err){
         res.status(400).json({message: err.message})
@@ -65,7 +65,7 @@ router.patch('/:id',getUser, async (req, res) => {
 //Deleting one
 router.delete('/:id',getUser, async (req, res) => {
     try{
-        await res.user.remove()
+        await req.user.remove()
         res.json({message: 'User removed'})
     } catch(err){
         res.status(500).json({message: err.message})
@@ -82,7 +82,7 @@ async function getUser(req,res,next){
     } catch(err){
         return res.status(500).json({message: err.message})
     }
-    res.user =user
+    req.user =user
     next()
 }
 

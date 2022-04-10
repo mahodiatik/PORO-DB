@@ -4,10 +4,10 @@ const app = express();
 const mongoose = require('mongoose')
 
 app.use(express.json())
+app.use(express.urlencoded({extended: true}))
 const userRouter = require('./routes/user')
 app.use('/user', userRouter)
 
-app.use(express.json())
 const bookRouter = require('./routes/book')
 app.use('/book', bookRouter)
 

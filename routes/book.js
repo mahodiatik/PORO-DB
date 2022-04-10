@@ -14,7 +14,7 @@ router.get('/', async(req, res) => {
 
 //Getting one
 router.get('/:id',getBook, (req, res) => {
-   res.json(res.book)
+   res.json(req.book)
 })
 
 //Creating one
@@ -39,23 +39,23 @@ router.post('/', async (req, res) => {
 //Updating one
 router.patch('/:id',getBook, async (req, res) => {
     if(req.body.name != null){
-        res.book.name = req.body.name
+        req.book.name = req.body.name
     }
     if(req.body.writer != null){
-        res.book.writer = req.body.writer
+        req.book.writer = req.body.writer
     }
     if(req.body.genre != null){
-        res.book.genre = req.body.genre
+        req.book.genre = req.body.genre
     }
     if(req.body.publisher != null){
-        res.book.publisher = req.body.publisher
+        req.book.publisher = req.body.publisher
     }
     if(req.body.link != null){
-        res.book.link = req.body.link
+        req.book.link = req.body.link
     }
 
     try{
-        const updatedBook = await res.book.save()
+        const updatedBook = await req.book.save()
         res.json(updatedBook)
     } catch(err){
         res.status(400).json({message: err.message})
@@ -69,7 +69,7 @@ router.patch('/:id',getBook, async (req, res) => {
 //Deleting one
 router.delete('/:id',getBook, async (req, res) => {
     try{
-        await res.book.remove()
+        await req.book.remove()
         res.json({message: 'Book removed'})
     } catch(err){
         res.status(500).json({message: err.message})
@@ -86,7 +86,7 @@ async function getBook(req,res,next){
     } catch(err){
         return res.status(500).json({message: err.message})
     }
-    res.book =book
+    req.book =book
     next()
 }
 
