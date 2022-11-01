@@ -81,7 +81,7 @@ async function getBook(req,res,next){
     try {
         book= await Book.findById(req.params.id)
         if(book==null){
-            return res.status(404).json({message: 'Cannot find book'})
+            return res.status(404).json({message: 'Book could not be found'})
         }
     } catch(err){
         return res.status(500).json({message: err.message})
