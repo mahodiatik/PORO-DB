@@ -31,7 +31,7 @@ router.post('/', async (req, res) => {
     try {
         const newUser = await user.save()
           
-        let filePath = path.join('C:\\Users\\mdmah\\Desktop\\PORO-DB\\email-template','email.html');
+        let filePath = path.join('C:\\Users\\mdmah\\Desktop\\KENABECHA\\email-template','email.html');
         text = fs.readFileSync(filePath, { encoding: 'utf-8' })
         // text.replace('{{ name }}', req.body.name)
         message = {
